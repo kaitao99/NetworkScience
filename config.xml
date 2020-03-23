@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+<tier1>sigmod</tier1>
+<tier1>pvldb</tier1>
+<tier1>vldb</tier1>
+<tier1>kdd</tier1>
+<tier2>edbt</tier2>
+<tier2>icde</tier2>
+<tier2>icdm</tier2>
+<tier2>sdm</tier2>
+<tier2>cikm</tier2>
+<tier3>dasfaa</tier3>
+<tier3>pakdd</tier3>
+<tier3>pkdd</tier3>
+<tier3>dexa</tier3>
+</config>
