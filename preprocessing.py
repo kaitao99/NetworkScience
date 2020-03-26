@@ -45,8 +45,8 @@ class network:
       self.institute.append(institute)
       return
   def save(self):
-      with open(b"network.p","wb") as wf:
-        pickle.dump(self, wf)
+      with open(b'network.p',"wb") as wf:
+        pickle.dump(self, wf, protocol = pickle.HIGHEST_PROTOCOL)
       return
 
 class publication:
@@ -72,6 +72,7 @@ class publication:
   def set_tier(self,tier:int):
       self.tier = tier
       return
+
 class person:
   name:str
   publications:[]
@@ -135,6 +136,8 @@ def parse_data_article(datapath:str):
  #iterate recursively over all sub-tree below
  itertree = iter(itertree)
  previous = None
+ count = 0;
+ scount = 0;
  for event,elem in itertree: #read first line
      if elem.tag == 'inproceedings' or elem.tag == 'phdthesis' or elem.tag == 'mastersthesis':
          previous = article()
@@ -149,10 +152,14 @@ def parse_data_article(datapath:str):
              previous.add_crossref(elem.text)
              article_tier(previous,configuration)
              if previous.tier >= 1:
+                   count += 1
+                   print(str(count)+" articles parsed.")
                    auto_add_authors(previous,networked)
                    auto_add_publication(previous,networked)
              previous = None
          elif elem.tag == 'school':
+               scount += 1
+               print(str(scount)+" schools parsed.")
                institute_name = elem.text
                previous.set_institute_name(institute_name)
                auto_add_institute(previous, networked)
@@ -260,7 +267,6 @@ def auto_add_institute(articled:article, networked:network):
    return
  
 def generate_data():
-    configuration = load_configuration(config)
     final_network = parse_data_article(datapath)
     final_network.save()
 
