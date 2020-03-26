@@ -4,8 +4,8 @@ import csv
 from fuzzywuzzy import fuzz
 import pickle
 import sys
- 
-sys.setrecursionlimit(999999)
+
+sys.setrecursionlimit(2147000000)
 datapath = "C:\\dblp.xml"
 config = "C:\\config.xml"
 uniData = "C:\\timesData.csv"
@@ -13,7 +13,7 @@ uniData = "C:\\timesData.csv"
 class institute:
   name:str
   location:str
-  prestige: int
+  prestige:int
   def __init__(self):
       self.name = None
       self.location = None
@@ -47,6 +47,7 @@ class network:
   def save(self):
       with open(b'network.p',"wb") as wf:
         pickle.dump(self, wf, protocol = pickle.HIGHEST_PROTOCOL)
+      wf.close()
       return
 
 class publication:
@@ -165,6 +166,8 @@ def parse_data_article(datapath:str):
                auto_add_institute(previous, networked)
                previous = None
      elem.clear()
+     if (count >= 3000):
+         break
  return networked
 
 def load_configuration(file_location:str):
