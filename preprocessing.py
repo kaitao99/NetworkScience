@@ -166,8 +166,6 @@ def parse_data_article(datapath:str):
                auto_add_institute(previous, networked)
                previous = None
      elem.clear()
-     if (count >= 3000):
-         break
  return networked
 
 def load_configuration(file_location:str):
