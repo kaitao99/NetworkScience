@@ -9,3 +9,9 @@ with open(b'network.p','rb') as f:
 
 for item in data.publications:
     print(item.title)
+
+for item in data.authors:
+    print(item.name)
+
+for item in data.institute:
+    print(item.name)
