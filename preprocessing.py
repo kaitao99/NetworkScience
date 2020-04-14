@@ -54,11 +54,13 @@ class publication:
   title:str
   tier:int
   year:int
+  venue:str
   authors:[]
   def __init__(self):   
       self.title = None
       self.tier = None
       self.year = None
+      self.venue = None
       self.authors = []
       return
   def add_author(self, author):
@@ -72,6 +74,9 @@ class publication:
       return
   def set_tier(self,tier:int):
       self.tier = tier
+      return
+  def set_venue(self,venue:str):
+      self.venue = venue
       return
 
 class person:
@@ -214,6 +219,7 @@ def auto_add_publication(articled:article, networked:network):
    new_publication.set_title(articled.title)
    new_publication.set_tier(articled.tier)
    new_publication.set_year(articled.year)
+   new_publication.set_venue(re.search('/(.*)/', articled.crossref))
    for author in articled.authors:
        for nauthor in networked.authors:
            if nauthor.name == author:
