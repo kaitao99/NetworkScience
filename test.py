@@ -1,8 +1,8 @@
 import pickle
 import preprocessing
 
-#preprocessing.generate_data()
-#print("done.")
+preprocessing.generate_data()
+print("done.")
 
 with open(b'network.p','rb') as f:
     data = pickle.load(f)
