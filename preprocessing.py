@@ -6,9 +6,9 @@ import pickle
 import sys
 
 sys.setrecursionlimit(2147000000)
-datapath = "C:\\dblp.xml"
-config = "C:\\config.xml"
-uniData = "C:\\timesData.csv"
+datapath = "dblp.xml"
+config = "config.xml"
+uniData = "timesData.csv"
 
 class institute:
   name:str

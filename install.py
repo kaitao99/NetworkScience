@@ -6,3 +6,7 @@ def install(package):
 
 install("lxml")
 install("fuzzywuzzy")
+install("matplotlib")
+install("python-Levenshtein")
+install("seaborn")
+install("numpy")
